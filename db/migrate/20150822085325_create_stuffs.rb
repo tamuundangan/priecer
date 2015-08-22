@@ -1,6 +1,6 @@
 class CreateStuffs < ActiveRecord::Migration
   def self.up
-    enable_extension 'hstore' unless extension_enable?('json')
+    enable_extension 'hstore' unless extension_enable?('hstore')
     enable_extension 'json' unless extension_enable?('json')
     
     create_table :stuffs do |t|
