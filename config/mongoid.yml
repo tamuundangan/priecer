@@ -9,15 +9,14 @@ development:
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - <%= ENV['MONGO_DATABASE_HOST'] %>
+        - localhost:27017
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
         # w: 1
 
         # Change the default consistency model to primary, secondary.
-        # :w
-        'secondary' will send reads to secondaries, 'primary' sends everything
+        # 'secondary' will send reads to secondaries, 'primary' sends everything
         # to master. (default: primary)
         # read: secondary_preferred
 
@@ -93,7 +92,7 @@ test:
     default:
       database: priecer_test
       hosts:
-        - <%= ENV['MONGO_DATABASE_HOST'] %>
+        - localhost:27017
       options:
         read: primary
         # In the test environment we lower the retries and retry interval to
