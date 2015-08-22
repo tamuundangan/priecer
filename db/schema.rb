@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822084304) do
+ActiveRecord::Schema.define(version: 20150822085325) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "redis_fdw"
+  enable_extension "hstore"
 
   create_table "categories", force: :cascade do |t|
     t.integer  "parent_id"
@@ -20,11 +25,26 @@ ActiveRecord::Schema.define(version: 20150822084304) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hello_world", id: false, force: :cascade do |t|
+    t.integer "id", default: "nextval('hello_world_id_seq'::regclass)", null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.integer  "parent_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stuffs", force: :cascade do |t|
+    t.integer  "location_id"
+    t.integer  "category_jd"
+    t.text     "name",        null: false
+    t.decimal  "price",       null: false
+    t.integer  "quantity",    null: false
+    t.json     "categories"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

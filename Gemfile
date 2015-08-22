@@ -43,4 +43,6 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'dotenv-rails'
 gem 'pg'
+gem 'ai4r'

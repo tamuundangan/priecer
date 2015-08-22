@@ -1,7 +1,6 @@
 class CreateStuffs < ActiveRecord::Migration
   def self.up
-    enable_extension 'hstore' unless extension_enable?('hstore')
-    enable_extension 'json' unless extension_enable?('json')
+    enable_extension 'hstore' unless extension_enabled?('hstore')
     
     create_table :stuffs do |t|
       t.integer    :location_id,  null: true
@@ -12,8 +11,6 @@ class CreateStuffs < ActiveRecord::Migration
       t.json       :categories,   null: true
       t.timestamps null: false
     end
-
-    add_index :location_id, :category_id
   end
 
   def self.down
