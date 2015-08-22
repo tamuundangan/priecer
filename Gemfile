@@ -46,3 +46,4 @@ end
 gem 'dotenv-rails'
 gem 'pg'
 gem 'ai4r'
+gem 'mongoid'
